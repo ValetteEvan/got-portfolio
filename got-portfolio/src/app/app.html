@@ -1,3 +1,5 @@
 
-<app-characters-list />
+<input class="input-card">
+<app-characters-list [charactersFromParent]="charactersToGiveToChild" />
+<app-continents-list [continentFromParent]="continentToGiveToChild" />
 <router-outlet/>

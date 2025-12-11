@@ -1,5 +1,13 @@
+<div class="search-container">
+  <input
+    #searchInput
+    type="text"
+    class="search-input"
+    placeholder="Rechercher un personnage..."
+    (input)="onSearch(searchInput.value)"
+  >
+</div>
 
-<input class="input-card">
-<app-characters-list [charactersFromParent]="charactersToGiveToChild" />
+<app-characters-list [charactersFromParent]="filteredCharacters"/>
 <app-continents-list [continentFromParent]="continentToGiveToChild" />
 <router-outlet/>

@@ -18,18 +18,36 @@ export class App implements OnInit {
   private continentsService = inject(ContinentService);
   private cdr = inject(ChangeDetectorRef);
 
-  protected charactersToGiveToChild: CharactersModel[] = [];
-  protected continentToGiveToChild: ContinentModel[] = [];
+  protected charactersToGiveToChild!: CharactersModel[];
+  protected continentToGiveToChild!: ContinentModel[];
+
+  protected filteredCharacters!: CharactersModel[];
+
+  protected onSearch(term: string){
+  this.filteredCharacters = this.charactersToGiveToChild.filter((character: CharactersModel) =>{
+  const fullName = character.fullName ?? '';
+  return fullName.toLowerCase().includes(term.toLowerCase())
+  })
+  }
 
   ngOnInit() {
-  this.charactersService.getCharacter().subscribe((charactersFromApi: CharactersModel[]) => {
-    this.charactersToGiveToChild = charactersFromApi;
-    this.cdr.detectChanges();
-  });
-
-    this.continentsService.getAllContinents().subscribe((continentFromApi: ContinentModel[]) => {
-      this.continentToGiveToChild = continentFromApi;
+  this.getAllContinentsTemplate();
+  this.getAllCharactersTemplate();
+  }
+  private getAllCharactersTemplate() {
+    this.charactersService.getCharacter().subscribe((charactersFromApi: CharactersModel[]) => {
+      this.charactersToGiveToChild = charactersFromApi;
       this.cdr.detectChanges();
     });
   }
+
+private getAllContinentsTemplate() {
+  this.continentsService.getAllContinents().subscribe((continentFromApi: ContinentModel[]) => {
+    this.continentToGiveToChild = continentFromApi;
+    this.cdr.detectChanges();
+  });
 }
+}
+
+
+

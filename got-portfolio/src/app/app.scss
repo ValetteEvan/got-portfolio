@@ -1,55 +1,5 @@
-@import '../styles/variables';
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  padding: $spacing-xxl $spacing-lg;
-  background: linear-gradient(180deg, $bg-darker 0%, $bg-dark 100%);
-  border-bottom: 2px solid $border-dark;
-  position: sticky;
-  top: 0;
-  z-index: $z-dropdown;
-  backdrop-filter: blur(10px);
-}
-
-.search-input {
-  width: 100%;
-  max-width: 600px;
-  padding: $spacing-md $spacing-xl;
-  font-size: $font-lg;
-  font-family: $font-default;
-  color: $text-primary;
-  background: linear-gradient(145deg, $bg-dark-secondary, $bg-dark);
-  border: 2px solid $border-dark;
-  border-radius: $radius-xl;
-  outline: none;
-  transition: all $transition-normal;
-  box-shadow: $shadow-md;
-
-  &::placeholder {
-    color: $text-muted;
-    font-style: italic;
-  }
-
-  &:focus {
-    border-color: $border-gold;
-    box-shadow: $shadow-gold;
-    transform: translateY(-2px);
-
-    &::placeholder {
-      color: $text-secondary;
-    }
-  }
-
-  &:hover:not(:focus) {
-    border-color: lighten($border-dark, 10%);
-    box-shadow: $shadow-lg;
-  }
-}
-
-// Style du conteneur principal
+// Style du conteneur principal de l'application
 :host {
   display: block;
   min-height: 100vh;
-  background: linear-gradient(180deg, $bg-darker 0%, $bg-dark 50%, $bg-brown-dark 100%);
 }
